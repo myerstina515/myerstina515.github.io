@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tina Myers, former AWS Partner Solutions Architect. Selected projects in cloud architecture, partner engineering, and technical enablement.">
+<meta name="theme-color" content="#111019">
+<title>Tina Myers | Technical Portfolio</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #111019;
+    --surface: #191723;
+    --rule: #373143;
+    --text: #f5f2fb;
+    --muted: #c4bdcf;
+    --accent: #cfb4fc;
+    --display: Georgia, "Times New Roman", serif;
+    --mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-padding-top: 1.5rem; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 1rem/1.65 system-ui, sans-serif; }
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+  .wrap { width: min(78rem, calc(100% - 5rem)); margin-inline: auto; }
+  .skip { position: fixed; top: .75rem; left: .75rem; z-index: 2; padding: .5rem 1rem; background: var(--text); color: var(--bg); transform: translateY(-200%); }
+  .skip:focus { transform: none; }
+  .masthead { border-bottom: 1px solid var(--rule); }
+  .masthead .wrap { min-height: 5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.15rem 2rem; }
+  .brand, nav a, .button { text-decoration: none; }
+  .brand { display: inline-flex; align-items: center; gap: .7rem; font-weight: 700; white-space: nowrap; }
+  .mark { display: grid; place-items: center; height: 2.15rem; width: 2.15rem; border: 1px solid #5c4c78; border-radius: .5rem; background: #231b32; color: var(--accent); font: .8rem var(--mono); }
+  nav { display: flex; flex-wrap: wrap; gap: .35rem 1.6rem; font-size: .9rem; color: var(--muted); }
+  nav a { padding-block: .35rem; }
+  nav a:hover, footer a:hover { color: var(--accent); }
+  .hero { background: radial-gradient(ellipse at 80% 58%, #241a38 0, transparent 52%); border-bottom: 1px solid var(--rule); }
+  .hero .wrap { position: relative; isolation: isolate; display: grid; grid-template-columns: 1.25fr .85fr; align-items: center; gap: 2rem; padding-block: clamp(4rem, 8vw, 7.2rem); }
+  .eyebrow { color: var(--accent); font: .875rem/1.5 var(--mono); letter-spacing: .11em; text-transform: uppercase; margin: 0 0 .85rem; }
+  h1, h2, h3, p, dl { margin: 0; }
+  h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: -.045em; }
+  h1 { font-size: clamp(4.1rem, 8.5vw, 8rem); line-height: .99; }
+  h2 { font-size: clamp(2.55rem, 4.5vw, 4.35rem); line-height: 1.05; }
+  h3 { font-size: 1.33rem; letter-spacing: -.026em; line-height: 1.25; }
+  .role { margin-top: 1.45rem; color: #e7dafb; font-size: clamp(1.1rem, 2.1vw, 1.45rem); line-height: 1.4; }
+  .role-secondary { margin-top: .5rem; color: var(--accent); font-size: clamp(1rem, 1.7vw, 1.225rem); font-weight: 650; line-height: 1.4; }
+  .intro { color: var(--muted); margin-top: 1rem; max-width: 37rem; font-size: 1.0625rem; }
+  .actions { margin-top: 1.7rem; display: flex; flex-wrap: wrap; gap: .65rem; }
+  .button { display: inline-flex; align-items: center; min-height: 2.85rem; padding: .55rem 1.05rem; border: 1px solid #59486f; border-radius: .35rem; font-weight: 650; font-size: .9rem; }
+  .button.primary { background: #d8c0fd; color: #201331; border-color: #d8c0fd; }
+  .button:hover { background: #38294d; }
+  .button.primary:hover { background: #ebdcff; }
+  .art { position: relative; align-self: stretch; display: grid; place-items: center; min-height: 19rem; overflow: hidden; }
+  .art::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle, #bf9deb63 1px, transparent 1.5px) center / 20px 20px;
+    mask-image: radial-gradient(ellipse closest-side, #000 15%, transparent 100%);
+  }
+  .plane { position: absolute; width: min(61%, 16rem); aspect-ratio: 1; border: 1px solid #9972d0; border-radius: 9%;
+    transform: translateY(var(--offset)) rotateX(56deg) rotateZ(-45deg);
+    background: linear-gradient(140deg, #4d36687d, #251a3b50); box-shadow: inset 0 0 1.9rem #aa80f02a, 0 0 2rem #120c1c55; }
+  .plane::before { content: ""; position: absolute; inset: 12%; border: 1px solid #ba97e473; border-radius: 8%; }
+  .plane::after { content: ""; position: absolute; width: 9%; aspect-ratio: 1; right: 9%; top: 9%; border-radius: 50%; background: #d4b5ff; box-shadow: 0 0 1.15rem #d4b5ff; }
+  .plane.top { border-color: #d1b1fc; background: linear-gradient(140deg,#7954aa99,#36234d69); }
+  .section { padding-block: clamp(3.3rem, 6.5vw, 6rem); }
+  .section + .section { border-top: 1px solid var(--rule); }
+  .section h2 { margin-bottom: 1.75rem; }
+  .section-note { max-width: 45rem; margin: -.75rem 0 1.5rem; color: var(--muted); }
+  .featured { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: .65rem; padding: clamp(1.15rem, 2.35vw, 1.9rem); min-width: 0; }
+  .featured .card { display: flex; flex-direction: column; border-top: 2px solid #8e6bb7; }
+  .category { margin-bottom: .65rem; color: var(--accent); font: .875rem/1.5 var(--mono); }
+  .tags { display: flex; flex-wrap: wrap; gap: .35rem; padding: 0; margin: .9rem 0 1.35rem; list-style: none; }
+  .tags li { color: #e7dbf7; background: #292239; border-radius: .25rem; padding: .12rem .48rem; font-size: .875rem; }
+  dt { font-weight: 700; letter-spacing: .01em; }
+  dd { margin: .15rem 0 .85rem; color: var(--muted); }
+  .case-intro { margin: 0 0 1rem; color: var(--muted); }
+  details { margin-top: .9rem; }
+  summary { color: var(--accent); font-weight: 650; cursor: pointer; padding-block: .35rem; width: fit-content; }
+  summary:hover, summary:focus-visible { color: #f3e7ff; }
+  summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .case-details { margin-top: .75rem; border-top: 1px solid var(--rule); padding-top: .85rem; }
+  .case-details > dl > dd:last-child { margin-bottom: 0; }
+  .featured .card { align-self: start; }
+  .result { background: #241d31; border-left: 2px solid #a984d7; border-radius: 0 .3rem .3rem 0; padding: .7rem .85rem; margin-top: auto; }
+  .result dd { color: #e2d8f2; margin-bottom: 0; }
+  #bcsi .result p + p { margin-top: .65rem; }
+  .card > .project-link { margin-top: .9rem; }
+  .capabilities { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; }
+  .capabilities p { margin: .65rem 0 .9rem; color: var(--muted); }
+  .content-link { color: var(--accent); font-weight: 650; text-underline-offset: .22em; }
+  .content-link:hover { color: #f3e7ff; }
+  .engagements { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+  .engagement-note { margin-top: 1rem; }
+  .card > p + dl { margin-top: 1rem; }
+  .additional { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+  .additional dl { margin-top: 1rem; }
+  .additional dd:last-child { margin-bottom: 0; }
+  .writing { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+  .writing article { display: grid; grid-template-columns: 1fr 1.35fr; align-items: baseline; gap: .5rem 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
+  .writing article p + p { margin-top: .3rem; }
+  .writing article p { color: var(--muted); }
+  .contact { display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.5rem 3rem; background: linear-gradient(130deg,#231a32,#181622); border: 1px solid #463759; border-radius: .7rem; padding: clamp(1.4rem, 4vw, 3.25rem); }
+  .contact h2 { margin-bottom: .75rem; }
+  .contact p { color: var(--muted); max-width: 31rem; }
+  .links { display: grid; align-content: center; gap: .5rem; }
+  .links div { display: grid; grid-template-columns: 5.5rem 1fr; gap: .75rem; border-bottom: 1px solid #483b56; padding: .45rem 0; align-items: baseline; }
+  .links dd { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+  footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: .875rem; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 4rem; }
+  footer a { text-underline-offset: .2em; }
+  @media (max-width: 66rem) { .featured, .additional, .capabilities { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+  @media (max-width: 48rem) {
+    .wrap { width: calc(100% - 2.5rem); }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero .art { min-height: 14rem; }
+    .plane { width: min(45%, 13rem); }
+    .contact { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 37rem) {
+    .masthead .wrap { flex-direction: column; align-items: flex-start; justify-content: center; gap: .45rem; padding-block: .85rem; }
+    nav { gap: .15rem 1.1rem; }
+    .hero .wrap { padding-block: 3.25rem 1.7rem; gap: .75rem; }
+    .hero .art { min-height: 12rem; }
+    .featured, .additional, .engagements, .capabilities, .writing article { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true">TM</span>Tina Myers</a>
+    <nav aria-label="Main navigation">
+      <a href="#featured">Featured Projects</a>
+      <a href="#additional">Additional Work</a>
+      <a href="#engagements">Partner Engineering</a>
+      <a href="#writing">Technical Writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="name">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Technical portfolio</p>
+        <h1 id="name">Tina Myers</h1>
+        <p class="role">Solutions Architecture · Partner Engineering · Software Development</p>
+        <p class="role-secondary">Technical Content · Developer Education · Technical Enablement</p>
+        <p class="intro">I turn complex technical requirements into working solutions, clear documentation, and practical learning experiences. My experience spans AWS partner engineering, technical discovery, solution design, production web development, and technical education.</p>
+        <div class="actions">
+          <a class="button primary" href="#featured">Explore featured projects</a>
+          <a class="button" href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="art" aria-hidden="true">
+        <span class="plane" style="--offset: 49px"></span>
+        <span class="plane" style="--offset: 0px"></span>
+        <span class="plane top" style="--offset: -49px"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="capabilities" aria-labelledby="capabilities-heading">
+    <div class="wrap">
+      <h2 id="capabilities-heading">From Discovery to Working Solutions</h2>
+      <div class="capabilities">
+        <article class="card">
+          <h3>Discover</h3>
+          <p>Understand partner and customer problems, technical requirements, existing systems, product goals, and implementation constraints.</p>
+          <a class="content-link" href="#agentic-case-study">AI-powered entity resolution case study</a>
+        </article>
+        <article class="card">
+          <h3>Design</h3>
+          <p>Translate requirements into architecture recommendations, integration approaches, and practical solution options.</p>
+          <a class="content-link" href="#fitness-case-study">Forever Body Fitness</a>
+        </article>
+        <article class="card">
+          <h3>Engineer &amp; Collaborate</h3>
+          <p>Build software and infrastructure on projects I develop. On AWS partner engagements, collaborate with partner engineering teams to investigate technical problems and guide remediation.</p>
+          <a class="content-link" href="#marketplace-case-study">Marketplace troubleshooting</a>
+        </article>
+        <article class="card">
+          <h3>Validate &amp; Enable</h3>
+          <p>Verify technical outcomes, write documentation, deliver workshops, and help partners adopt or improve their solutions.</p>
+          <a class="content-link" href="#validation-case-study">AWS Partner Validation</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="featured" aria-labelledby="featured-heading">
+    <div class="wrap">
+      <h2 id="featured-heading">Featured Technical Projects</h2>
+      <p class="section-note">Forever Body Fitness is my independent software development project. The three AWS case studies come from my work as an AWS Partner Solutions Architect.</p>
+      <div class="featured">
+        <article class="card" id="forever-body-fitness">
+          <p class="category">Independent Software Engineering</p>
+          <h3>Forever Body Fitness website &amp; Sanity integration</h3>
+          <ul class="tags" aria-label="Technologies"><li>React</li><li>TypeScript</li><li>Sanity</li><li>GROQ</li><li>Portable Text</li><li>Heroku</li></ul>
+          <p class="case-intro">I independently built the Forever Body Fitness website, originally called Tedashi Trained, and connected its React frontend to a separate Sanity backend for publishing and organizing content.</p>
+          <dl class="result"><dt>Outcome</dt><dd>The deployed site lets editors maintain posts, categories, and featured content through Sanity without a code change for routine updates.</dd></dl>
+          <details id="fitness-case-study">
+            <summary>Read the Forever Body Fitness case study</summary>
+            <div class="case-details">
+              <dl>
+                <dt>Publishing and visitor requirements</dt><dd>The business needed to create and edit posts with featured images and rich formatting, choose which posts to highlight across the site or within a category, and let visitors browse and filter content across screen sizes. Those requirements shaped the Sanity content model, GROQ queries, and React rendering logic.</dd>
+                <dt>My role</dt><dd>I developed the React and TypeScript site, connected it to Sanity, implemented the publishing behavior in the frontend, and configured and validated the production deployment on Heroku.</dd>
+                <dt>Content architecture</dt><dd>I worked with Sanity schemas and references for categories, featured posts, images, and structured content. GROQ retrieves the relevant documents and references from the separate CMS backend, and the frontend uses Portable Text to render rich content, including formatting and images.</dd>
+                <dt>Category and featured-post logic</dt><dd>I implemented global and category-specific pins. A category pin appears only in its own category. I also implemented category filtering, hid unused categories, and ordered the remaining posts by publication date.</dd>
+                <dt>Production configuration and verification</dt><dd>I worked through the differences between the local frontend and the Heroku deployment. I configured the production environment variables and allowed the deployed frontend’s origin in Sanity’s CORS settings, then verified that the live site could retrieve and render managed content.</dd>
+              </dl>
+            </div>
+          </details>
+          <p class="project-link"><a class="content-link" href="https://www.foreverbodyfitness.com/">View Live Website</a></p>
+          <p class="project-link"><a class="content-link" href="https://github.com/myerstina515/tedashitrained">React frontend repository (Tedashi Trained)</a></p>
+          <p class="project-link"><a class="content-link" href="https://github.com/myerstina515/forever-body-fitness-content">Sanity CMS backend repository</a></p>
+        </article>
+
+        <article class="card" id="bcsi">
+          <p class="category">Cloud Architecture &amp; AWS Engineering</p>
+          <h3>BCSI in the Cloud</h3>
+          <ul class="tags" aria-label="Technologies"><li>CloudFormation</li><li>VPC</li><li>IAM</li><li>KMS</li><li>S3</li><li>EC2</li><li>CloudTrail</li><li>Athena</li></ul>
+          <p class="case-intro">I built a deployable AWS workshop lab so energy and utility partners could work with infrastructure, security controls, and audit evidence for a cloud migration.</p>
+          <dl class="result">
+            <dt>Outcome</dt>
+            <dd>
+              <p>I delivered the workshop six times, with the content recording more than 1,300 views.</p>
+              <p>The engagement also helped secure a commitment from a major U.S. energy-sector provider to migrate an existing on-premises BCSI data protection solution to AWS.</p>
+              <p>This demonstrated how hands-on technical enablement and cloud architecture guidance could support modernization of established data protection solutions in a highly regulated industry.</p>
+            </dd>
+          </dl>
+          <details>
+            <summary>Read the BCSI case study</summary>
+            <div class="case-details">
+              <dl>
+                <dt>Challenge</dt><dd>Partners evaluating AWS for workloads involving Bulk Electric System (BES) Cyber System Information (BCSI) needed to see how cloud infrastructure, access, encryption, and audit evidence fit together.</dd>
+                <dt>My role</dt><dd>I developed the workshop and its deployable environment, built CloudTrail and Athena reporting patterns, and delivered the lab to partner and customer audiences.</dd>
+                <dt>How the lab worked</dt><dd>CloudFormation provisioned the environment. Amazon VPC and EC2 provided networking and compute. IAM and AWS KMS addressed access and encryption, and Amazon S3 provided storage. CloudTrail recorded AWS activity and Athena let participants query audit information and examine evidence.</dd>
+                <dt>Technical decisions</dt><dd>CloudFormation gave participants a repeatable environment for exploring the relationships between services. With the lab deployed, they could inspect the infrastructure and work through the audit evidence themselves.</dd>
+              </dl>
+            </div>
+          </details>
+          <p class="project-link"><a class="content-link" href="https://catalog.us-east-1.prod.workshops.aws/workshops/c301d974-0991-4ac3-923b-edd92cd9207a/en-US">Open the BCSI workshop</a></p>
+        </article>
+
+        <article class="card" id="marketplace">
+          <p class="category">AWS Partner Engineering &amp; Co-Building</p>
+          <h3>Tracing a missing AWS Marketplace email</h3>
+          <ul class="tags" aria-label="Technologies"><li>AWS Marketplace</li><li>CloudFormation</li><li>Amazon SNS</li></ul>
+          <p class="case-intro">I helped a partner trace a missing validation email to the Amazon SNS notification path and guided a topic configuration change.</p>
+          <dl class="result"><dt>Outcome</dt><dd>Email delivery resumed. The listing used for troubleshooting passed validation, followed by the other four.</dd></dl>
+          <details id="marketplace-case-study">
+            <summary>Read the Marketplace troubleshooting case study</summary>
+            <div class="case-details">
+              <dl>
+                <dt>Observed symptom</dt><dd>The partner had five listings to validate. A required email repeatedly failed to arrive, blocking completion of the validation workflow.</dd>
+                <dt>Scope isolation</dt><dd>During a screen share, I worked with the partner to isolate one listing. That gave us a single integration and notification path to follow before validating the other listings.</dd>
+                <dt>Integration and log review</dt><dd>I examined the listing’s CloudFormation integration with the partner. We reviewed relevant logs and followed the expected notification path across the AWS services involved, which narrowed our attention to Amazon Simple Notification Service (SNS) and its topic configuration.</dd>
+                <dt>Partner-led remediation</dt><dd>I guided the partner through the remediation. The partner made the SNS topic configuration change in its own environment.</dd>
+                <dt>Validation</dt><dd>We confirmed that the previously missing email arrived after the change and that the listing we investigated passed the original validation workflow. The remaining four listings then passed validation.</dd>
+              </dl>
+            </div>
+          </details>
+        </article>
+
+        <article class="card" id="validation">
+          <p class="category">Technical Enablement &amp; Leadership</p>
+          <h3>AWS Partner Validation Modernization</h3>
+          <ul class="tags" aria-label="Focus areas"><li>AWS Well-Architected</li><li>Technical assessment</li><li>Reviewer calibration</li></ul>
+          <p class="case-intro">I co-led a redesign of technical partner reviews and wrote calibration guides that helped reviewers apply the same assessment criteria.</p>
+          <dl class="result"><dt>Outcome</dt><dd>Review time fell from about two hours to 40 minutes, a 67% reduction. Validation requests increased about 150%, and customer satisfaction was approximately 4.85/5.</dd></dl>
+          <details id="validation-case-study">
+            <summary>Read the validation modernization case study</summary>
+            <div class="case-details">
+              <dl>
+                <dt>Challenge</dt><dd>Technical assessment requirements were open to interpretation across reviewers. Reviews took about two hours, and reviewers needed a shared way to apply the criteria to partner submissions.</dd>
+                <dt>My role</dt><dd>I co-led the modernization effort, authored reviewer calibration guides including AWS Well-Architected guidance, and led more than 30 enablement sessions across three regions.</dd>
+                <dt>Approach and decisions</dt><dd>I helped refine assessment requirements, translated them into instructions reviewers could use during a submission review, and used the guides in calibration sessions. Written criteria gave reviewers a reference they could reuse across submissions and regions. Calibration gave reviewers a way to align how they applied those criteria in practice.</dd>
+                <dt>Team results</dt><dd>The redesigned process reduced review time and improved consistency across reviews. The guides and enablement sessions were my deliverables within the broader team effort.</dd>
+              </dl>
+            </div>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="additional" aria-labelledby="additional-heading">
+    <div class="wrap">
+      <h2 id="additional-heading">Additional Engineering &amp; Enablement</h2>
+      <p class="section-note">Engineering and enablement projects from my time as an AWS Partner Solutions Architect.</p>
+      <div class="additional">
+        <article class="card">
+          <p class="category">Technical Enablement &amp; Leadership</p>
+          <h3>AWS MSP technical onboarding redesign</h3>
+          <p class="case-intro">The previous preparation process could take four to six months. I helped redesign it around self-service guidance and implementation resources, with a Solutions Architect-led event to support progression. Partners could work through preparation steps before the event using shared resources, reducing repeated guidance.</p>
+          <dl><dt>Pilot outcome</dt><dd>Limited pilots demonstrated technical onboarding in about two to three days. This measured preparation and onboarding in the pilot. Formal AWS MSP designation is a separate program outcome.</dd></dl>
+        </article>
+        <article class="card">
+          <p class="category">Technical Content &amp; Enablement · AWS Core Compute</p>
+          <h3>AWS Compute Pricing &amp; Cost Optimization — First-Call Technical Enablement</h3>
+          <p class="case-intro">I developed and delivered a reusable first-call presentation to help AWS sellers and Solutions Architects explain EC2 purchasing options, cost tradeoffs, and capacity considerations.</p>
+          <details id="compute-pricing-case-study">
+            <summary>Read the compute pricing case study</summary>
+            <div class="case-details">
+              <dl>
+                <dt>Challenge</dt><dd>Early customer and partner conversations often conflated pricing discounts with capacity guarantees. Sellers and Solutions Architects needed a technically accurate resource that explained commitment requirements and helped them identify which options fit a workload.</dd>
+                <dt>My contribution</dt><dd>As part of the AWS Core Compute Technical Field Community, I structured and wrote the presentation, identified common misconceptions, and worked with AWS Compute and Capacity product teams to validate the technical explanations. I wrote detailed speaker notes so colleagues could deliver the material independently.</dd>
+                <dt>Technical approach</dt><dd>I organized the material around customer decisions about flexibility, predictable usage, and financial commitments. I explained the tradeoffs between Savings Plans and Reserved Instances, then covered Capacity Reservations and how capacity assurance differs from discounted usage. The material helped sellers narrow the purchasing options and identify questions that needed specialist input.</dd>
+                <dt>Outcome</dt><dd>I presented the material to more than 60 people. Colleagues within and outside Core Compute adopted it as a reusable resource for introductory conversations, giving teams consistent guidance they could deliver themselves.</dd>
+              </dl>
+            </div>
+          </details>
+        </article>
+        <article class="card">
+          <p class="category">Cloud Architecture &amp; AWS Engineering</p>
+          <h3>Simplifying an AWS Compute Architecture with EC2 Auto Scaling Instance Refresh</h3>
+          <p class="case-intro">I helped a technology partner evaluate a simpler way to replace application instances while maintaining service availability, then demonstrated an alternative using native EC2 Auto Scaling Instance Refresh.</p>
+          <details id="instance-refresh-case-study">
+            <summary>Read the Instance Refresh case study</summary>
+            <div class="case-details">
+              <dl>
+                <dt>Challenge</dt><dd>The partner’s CloudFormation-managed design used two EC2 Auto Scaling groups, two load-balancer target groups, and custom AWS Lambda orchestration to coordinate instance replacement and maintain application capacity.</dd>
+                <dt>Discovery</dt><dd>I reviewed what each component was intended to do and investigated why native Instance Refresh had been ruled out. The key requirement was to replace instances while preserving application availability and behavior.</dd>
+                <dt>Alternative design</dt><dd>I evaluated how Instance Refresh could replace instances incrementally within an Auto Scaling group. I identified how useful existing Lambda functionality could stay in the design while the AWS-managed capability took over instance replacement.</dd>
+                <dt>Demonstrated outcome</dt><dd>I demonstrated an architecture that met the instance-replacement requirements with fewer components and less reliance on duplicate capacity and custom orchestration.</dd>
+                <dt>Technologies</dt><dd>Amazon EC2, EC2 Auto Scaling Instance Refresh, AWS CloudFormation, AWS Lambda, Application Load Balancer, and load-balancer target groups.</dd>
+              </dl>
+            </div>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="engagements" aria-labelledby="engagements-heading">
+    <div class="wrap">
+      <h2 id="engagements-heading">AWS Partner Discovery &amp; Solution Development</h2>
+      <p class="section-note">Selected engagements from my time as an AWS Partner Solutions Architect. The case studies focus on my role and generalize nonpublic details.</p>
+      <div class="engagements">
+        <article class="card" id="entity-resolution-case-study">
+          <p class="category">AWS Partner Engineering · Solution Architecture · AI Integration</p>
+          <h3>AI-Powered Entity Resolution: From Technical Discovery to Production Integration</h3>
+          <p class="case-intro">I helped an entity-resolution technology partner move from AWS validation and Marketplace readiness to a completed Amazon Q Developer integration. I proposed the integration, advised the partner’s engineers on the architecture, and developed AWS-side workshop content.</p>
+          <details id="agentic-case-study">
+            <summary>Read the entity resolution case study</summary>
+            <div class="case-details">
+              <dl>
+                <dt>Phase 1 — Technical Discovery &amp; Solution Strategy</dt>
+                <dd>I supported the partner’s AWS Foundational Technical Review (FTR) and Marketplace readiness and developed AWS-specific technical guidance. I expanded the discussion to the product roadmap and explored how the partner’s capabilities could help customers reconcile records from different systems. That discovery identified generative AI integration opportunities and connected the partner’s technology to customer-facing solution opportunities.</dd>
+                <dt>Phase 2 — Architecture &amp; Solution Development</dt>
+                <dd>I proposed integrating the partner’s entity-resolution capabilities with Amazon Q Developer. The partner selected the concept, and I provided architectural guidance and collaborated with its engineering team. The partner’s engineers implemented the Model Context Protocol (MCP) server that exposed their entity-resolution SDK and capabilities to Amazon Q Developer.</dd>
+                <dt>Phase 3 — Technical Implementation &amp; Customer Enablement</dt>
+                <dd>I developed the AWS-side hands-on workshop content and contributed technical documentation and educational materials. I collaborated on a co-branded workshop and webinar, helped demonstrate how the integration could support customer data-mapping and entity-resolution workflows, and mentored another Solutions Architect during the collaboration.</dd>
+                <dt>Outcomes</dt>
+                <dd>The partner’s engineering team delivered the Amazon Q Developer integration. The engagement moved from technical discovery to working product functionality, a hands-on workshop, and customer enablement materials. It also identified a projected commercial opportunity over the following 12 months.</dd>
+              </dl>
+              <p class="project-link">I co-authored <a class="content-link" href="https://builder.aws.com/content/35zRFtZMvE8jS1qqucXY0idUdIZ/streamlining-entity-resolution-on-aws-with-amazon-q-and-senzing">Streamlining Entity Resolution on AWS with Amazon Q and Senzing</a>, which covers related technology and the workshop.</p>
+            </div>
+          </details>
+        </article>
+        <article class="card">
+          <p class="category">AWS Partner Discovery &amp; Solution Architecture</p>
+          <h3>AI Architecture Discovery for a Workflow Automation Partner</h3>
+          <p class="case-intro">I explored intelligent document processing and agentic compliance opportunities with a workflow and compliance technology partner and proposed an architecture for additional AI capabilities.</p>
+          <details id="process-street-case-study">
+            <summary>Read the workflow automation discovery case study</summary>
+            <div class="case-details">
+              <dl>
+                <dt>Validation and workshops</dt><dd>I identified technical validation considerations in the partner’s existing AI-provider architecture and contributed to technical workshops on Amazon Bedrock, agentic AI, and intelligent document processing.</dd>
+                <dt>Roadmap and architecture</dt><dd>I explored the partner’s product roadmap through discovery and proposed an architecture for additional AI-driven capabilities.</dd>
+                <dt>Outcome</dt><dd>The partner selected the proposed direction for implementation. I departed AWS before delivery of the planned solution.</dd>
+              </dl>
+              <p class="project-link">My published article <a class="content-link" href="https://builder.aws.com/content/37XZpy6mWho4Os8gm5VEi7aCi6s/process-streets-2-week-migration-to-amazon-bedrock">Process Street's 2-Week Migration to Amazon Bedrock</a> documents the partner’s separate migration of LLM workloads.</p>
+            </div>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="writing" aria-labelledby="writing-heading">
+    <div class="wrap">
+      <h2 id="writing-heading">Technical Writing</h2>
+      <p class="section-note">I create developer-facing articles, architecture documentation, and hands-on workshops that help teams implement and adopt technical solutions. My AWS work also includes reviewer calibration guides and partner education.</p>
+      <div class="writing">
+        <article>
+          <h3><a class="content-link" href="https://builder.aws.com/content/35zRFtZMvE8jS1qqucXY0idUdIZ/streamlining-entity-resolution-on-aws-with-amazon-q-and-senzing">Streamlining Entity Resolution on AWS with Amazon Q and Senzing</a></h3>
+          <p>Co-authored AWS Builder Center article on using Amazon Q Developer to map source data as part of a Senzing entity resolution workflow.</p>
+        </article>
+        <article>
+          <h3><a class="content-link" href="https://builder.aws.com/content/37ZgGT2aXQQBg3jxYaFddsot9a0/intelligent-spaces-kloudspot-and-aws-transform-operations">Intelligent Spaces: Kloudspot &amp; AWS Transform Operations</a></h3>
+          <p>Co-authored AWS Builder Center article on applying physical AI to operational data and activity in physical spaces.</p>
+        </article>
+        <article>
+          <h3><a class="content-link" href="https://builder.aws.com/content/37XZpy6mWho4Os8gm5VEi7aCi6s/process-streets-2-week-migration-to-amazon-bedrock">Process Street's 2-Week Migration to Amazon Bedrock</a></h3>
+          <p>AWS Builder Center article published under my name about Process Street’s migration of LLM workloads to Amazon Bedrock.</p>
+        </article>
+        <article>
+          <h3><a class="content-link" href="https://catalog.us-east-1.prod.workshops.aws/workshops/c301d974-0991-4ac3-923b-edd92cd9207a/en-US">BCSI in the Cloud workshop</a></h3>
+          <p>Hands-on workshop material I developed for energy and utility audiences, covering AWS infrastructure, security, and audit evidence.</p>
+        </article>
+      </div>
+      <p class="project-link engagement-note"><a class="content-link" href="https://builder.aws.com/community/@tinamy">AWS Builder Center profile</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-heading">
+    <div class="wrap contact">
+      <div>
+        <h2 id="contact-heading">Contact &amp; Links</h2>
+        <p>Open to Solutions Engineer, Solutions Architect, Partner Engineering, and technical enablement roles.</p>
+      </div>
+      <dl class="links">
+        <div><dt>Email</dt><dd><a class="content-link" href="mailto:myers.tina515@gmail.com">myers.tina515@gmail.com</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a class="content-link" href="https://www.linkedin.com/in/tinalmyers">Tina Myers on LinkedIn</a></dd></div>
+        <div><dt>GitHub</dt><dd><a class="content-link" href="https://github.com/myerstina515">myerstina515</a></dd></div>
+        <div><dt>Résumé</dt><dd><a class="content-link" href="Tina_Myers_Resume.pdf">View résumé (PDF)</a></dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>Tina Myers</span><a href="#top">Back to top</a></div></footer>
+<script>
+  function openLinkedCaseStudy() {
+    const destination = document.getElementById(window.location.hash.slice(1));
+    const caseStudy = destination instanceof HTMLDetailsElement
+      ? destination
+      : destination?.querySelector(':scope > details');
+    if (caseStudy) {
+      caseStudy.open = true;
+    }
+  }
+
+  window.addEventListener('hashchange', openLinkedCaseStudy);
+  openLinkedCaseStudy();
+</script>
+</body>
+</html>
